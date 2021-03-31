@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Buyer from './Buyer'
+import Seller from './Seller'
 
 export class AppContainer extends Component {
   state = {
@@ -7,8 +9,6 @@ export class AppContainer extends Component {
 
   renderPage = () => {
     switch (this.state.page) {
-      case 'AppContainer':
-        return <AppContainer />
       case 'Buyer':
         return <Buyer />
       case 'Seller':
@@ -25,12 +25,13 @@ export class AppContainer extends Component {
   }
 
 
-
   render() {
     return (
       <div>
-      <button onClick={this.buyerPage}>Sou Comprador</button>
-      <button onClick={this.sellerPage}>Sou Vendedor</button>
+        <button onClick={this.buyerPage}>Sou Comprador</button>
+        <button onClick={this.sellerPage}>Sou Vendedor</button>
+
+        {this.renderPage()}
       </div>
     )
   }
