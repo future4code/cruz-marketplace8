@@ -14,6 +14,7 @@ class Products extends React.Component {
                     <p>Preço: R${product.price},00</p>
                     <p>Pagamento: {product.paymentMethod}</p>
                     <p>Parcelamento:{product.installments}</p>
+                    <button>Adicionar ao Carrinho</button>
                     <hr />
                 </div>
 
