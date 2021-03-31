@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React from 'react';
 import HeaderBuyer from './HeaderBuyer'
-import { baseUrl } from '../parameters'
+import { baseUrl, categories } from '../parameters'
 import Products from './Products';
+import Cart from './Cart'
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 // import styled from 'styled-components';
 
@@ -10,12 +11,12 @@ class Buyer extends React.Component {
 
     state = {
         products: [],
-        productsFiltered: [],
+        productsCart: [],
         inputSearch: '',
         order: 'Crescente',
         category: '',
         openCart: false,
-        cartList: []
+        quantity: 0,
     }
 
     componentDidMount = () => {
@@ -58,7 +59,7 @@ class Buyer extends React.Component {
         const filteredList = this.state.products
             .filter((p) => {
                 if (this.state.inputSearch) {
-                    return (this.state.inputSearch && p.name.toLowerCase().includes(this.state.inputSearch))
+                    return (this.state.inputSearch && p.name.includes(this.state.inputSearch))
                 } else {
                     return true
                 }
@@ -77,39 +78,40 @@ class Buyer extends React.Component {
         )
     }
 
-    addCart = (addProduct) => {
-        let newCartList = [...this.state.cartList];
-        let productShow = this.state.cartList.findIndex(
-            (p) => p.id === addProduct.id
-        );
-        if (productShow > -1) {
-            newCartList[productShow].quantity++;
-        } else {
-            addProduct.quantity = 1;
-            newCartList.push(addProduct);
-        }
-        this.setState({ cartList: newCartList });
-    };
 
-    deleteProductCart = (id) => {
-        let deleteProductCart = [...this.state.cartList];
-        let productCart = this.state.cartList.findIndex(
-            (p) => p.id === id
-        );
 
-        deleteProduct.splice(productCart, 1);
-        this.setState({ cartList: deleteProduct });
-    };
+    addCart = (id) => {
+        const cartList = this.state.products.map((p) => {
+            if (p.id === id) {
+                const cartQuantity = this.state.quantity++
+                const productCart = this.state.productsCart.push(p.id)
+                return (productCart, cartQuantity)
+            } else {
+                return p
+            }
+        })
+        this.setState({ productsCart: cartList })
+    }
+
+    // deleteProductCart = (id) => {
+    //     let deleteProductCart = [...this.state.cartList];
+    //     let productCart = this.state.cartList.findIndex(
+    //         (p) => p.id === id
+    //     );
+
+    //     deleteProduct.splice(productCart, 1);
+    //     this.setState({ cartList: deleteProduct });
+    // };
 
 
     render() {
-
+        console.log(this.state.productsCart)
         let orderProducts = this.orderProduct()
 
-        const categoryOptions = this.state.products.map((p) => {
+        const categoryOptions = categories.map((p) => {
             return (
-                <option key={p.id}>
-                    {p.category}
+                <option>
+                    {p}
                 </option>
             )
         })
@@ -136,8 +138,9 @@ class Buyer extends React.Component {
                     />
                     {this.state.openCart && (
                         <Cart
-                            cartList={this.state.cartList}
-                            deleteProductCart={this.deleteProductCart}
+                            productsCart={this.state.productsCart}
+                            quantity={this.state.quantity}
+                        // deleteProductCart={this.deleteProductCart}
                         />
                     )}
 
@@ -146,6 +149,8 @@ class Buyer extends React.Component {
                 <div>
                     {filter.map((p) => {
                         return <Products
+                            addCart={this.addCart}
+                            quantity={this.state.quantity}
                             products={p}
                         />
                     }
