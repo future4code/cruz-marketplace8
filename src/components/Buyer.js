@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import HeaderBuyer from './HeaderBuyer'
-import { baseUrl } from '../parameters'
+import { baseUrl, categories } from '../parameters'
 import Products from './Products';
 // import styled from 'styled-components';
 
@@ -51,7 +51,7 @@ class Buyer extends React.Component {
         const filteredList = this.state.products
         .filter((p) => {
             if (this.state.inputSearch) {
-                return (this.state.inputSearch && p.name.toLowerCase().includes(this.state.inputSearch))
+                return (this.state.inputSearch && p.name.includes(this.state.inputSearch))
             } else {
                 return true
             }
@@ -74,10 +74,10 @@ class Buyer extends React.Component {
 
         let orderProducts = this.orderProduct()
 
-        const categoryOptions = this.state.products.map((p) => {
+        const categoryOptions = categories.map((p) => {
             return (
-                <option key={p.id}>
-                    {p.category}
+                <option>
+                    {p}
                 </option>
             )
         })

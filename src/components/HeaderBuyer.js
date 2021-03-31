@@ -27,7 +27,8 @@ export class HeaderBuyer extends React.Component {
                     >
                     </input>
                 </div>
-            </div >
+                <button onClick={this.props.openCart}>Carrinho</button>
+            </div>
         )
     }
 }
