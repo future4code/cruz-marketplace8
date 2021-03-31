@@ -3,6 +3,7 @@ import React from 'react';
 import HeaderBuyer from './HeaderBuyer'
 import { baseUrl } from '../parameters'
 import Products from './Products';
+import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 // import styled from 'styled-components';
 
 class Buyer extends React.Component {
@@ -13,6 +14,8 @@ class Buyer extends React.Component {
         inputSearch: '',
         order: 'Crescente',
         category: '',
+        openCart: false,
+        cartList: []
     }
 
     componentDidMount = () => {
@@ -40,6 +43,10 @@ class Buyer extends React.Component {
         this.setState({ category: e.target.value })
     }
 
+    onClickOpenCart = () => {
+        this.setState({ openCart: !this.state.openCart })
+    }
+
     orderProduct = () => {
         const orderProduct = this.state.products.sort((x, y) =>
             this.state.order === 'Crescente' ? x.price - y.price : y.price - x.price
@@ -49,25 +56,50 @@ class Buyer extends React.Component {
 
     filterProducts = () => {
         const filteredList = this.state.products
-        .filter((p) => {
-            if (this.state.inputSearch) {
-                return (this.state.inputSearch && p.name.toLowerCase().includes(this.state.inputSearch))
-            } else {
-                return true
-            }
-        })
+            .filter((p) => {
+                if (this.state.inputSearch) {
+                    return (this.state.inputSearch && p.name.toLowerCase().includes(this.state.inputSearch))
+                } else {
+                    return true
+                }
+            })
 
-        .filter((p) => {
-            if (this.state.category) {
-                return(this.state.category && p.category.includes(this.state.category))
-            } else {
-                return true
-            }
-        })
+            .filter((p) => {
+                if (this.state.category) {
+                    return (this.state.category && p.category.includes(this.state.category))
+                } else {
+                    return true
+                }
+            })
 
         return (
             filteredList
-        )}
+        )
+    }
+
+    addCart = (addProduct) => {
+        let newCartList = [...this.state.cartList];
+        let productShow = this.state.cartList.findIndex(
+            (p) => p.id === addProduct.id
+        );
+        if (productShow > -1) {
+            newCartList[productShow].quantity++;
+        } else {
+            addProduct.quantity = 1;
+            newCartList.push(addProduct);
+        }
+        this.setState({ cartList: newCartList });
+    };
+
+    deleteProductCart = (id) => {
+        let deleteProductCart = [...this.state.cartList];
+        let productCart = this.state.cartList.findIndex(
+            (p) => p.id === id
+        );
+
+        deleteProduct.splice(productCart, 1);
+        this.setState({ cartList: deleteProduct });
+    };
 
 
     render() {
@@ -98,17 +130,26 @@ class Buyer extends React.Component {
                         inputSearch={this.inputSearch}
                         filterProducts={this.filterProducts}
                         categoryOptions={categoryOptions}
+                        onClickOpenCart={this.onClickOpenCart}
+                        openCart={this.state.openCart}
+
                     />
+                    {this.state.openCart && (
+                        <Cart
+                            cartList={this.state.cartList}
+                            deleteProductCart={this.deleteProductCart}
+                        />
+                    )}
 
                 </div>
 
                 <div>
                     {filter.map((p) => {
-                        return <Products 
-                        products={p}
+                        return <Products
+                            products={p}
                         />
                     }
-                    
+
                     )}
 
                 </div>
