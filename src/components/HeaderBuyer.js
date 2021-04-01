@@ -1,18 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
 export class HeaderBuyer extends React.Component {
-
-    // static propTypes = {
-    //     onClickOpenCart: PropTypes.func.isRequired,
-    //     productsCart: PropTypes.array
-    // };
-
-    // static defaultProps = {
-    //     productsCart: []
-    //   };
-  
 
     render() {
 
