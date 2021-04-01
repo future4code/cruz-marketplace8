@@ -19,10 +19,6 @@ class Buyer extends React.Component {
         quantity: 0,
     }
 
-    componentDidUpdate() {    
-        localStorage.setItem('carrinho', JSON.stringify(this.state.productsCart))
-      };
-
     componentDidMount = () => {
         this.getProduct()
         const cartProductList = JSON.parse(localStorage.getItem("carrinho"))
