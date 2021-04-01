@@ -8,29 +8,12 @@ export class AppContainer extends Component {
     page: 'AppContainer'
   }
 
-  page = "appcontainer"
-  buyerPage = () => {
-    if (this.state.page === "AppContainer") {
-      this.setState({ page: 'Buyer' })
-    }
-  }
-
-  sellerPage = () => {
-    this.setState({ page: 'Seller' })
-    console.log(this.state.page)
-  }
-
   renderPage = () => {
-    debugger
     switch (this.state.page) {
-      case 'AppContainer':
-        return <AppContainer />
       case 'Buyer':
         return <Buyer />
       case 'Seller':
         return <Seller />
-      default:
-        return<div></div>
     }
   }
 
@@ -41,7 +24,6 @@ export class AppContainer extends Component {
   sellerPage = () => {
     this.setState({ page: 'Seller' })
   }
-
 
   render() {
     const openPage = () => {
