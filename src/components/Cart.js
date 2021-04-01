@@ -22,7 +22,6 @@ class Cart extends React.Component {
             alert('Seu carrinho está vazio')
         } else {
             for (let i = 0; i < products.length; i++) {
-                console.log(products[i].price)
                 value = value + products[i].price * products[i].quantidade;
             }
 
@@ -34,16 +33,6 @@ class Cart extends React.Component {
         alert("Compra realizado com sucesso!")
     }
 
-    installmentsOptions = () => {
-        installments.map((i) => {
-            return (
-                <option>
-                    {i}
-                </option>
-            )
-        })
-    }
-
     paymentForm = () => {
         if (this.state.payment === 'Cartão de Crédito') {
             return (
@@ -51,8 +40,14 @@ class Cart extends React.Component {
                     <select>
                         <option disabled selected>
                             Parcelas
-          </option>
-                        {this.installmentsOptions}
+                        </option>
+                        {installments.map((i) => {
+                            return (
+                                <option>
+                                    {i}
+                                </option>
+                            )
+                        })}
                     </select>
                 </div>
             )
@@ -60,15 +55,15 @@ class Cart extends React.Component {
     }
 
     render() {
-        console.log(this.state.payment)
 
         const paymentMethodOptions = paymentMethod.map((p) => {
             return (
-                <option>
+                <option value={p}>
                     {p}
                 </option>
             )
         })
+
 
         return (
             <div>
@@ -87,7 +82,6 @@ class Cart extends React.Component {
                                     .replace('.', ',')}
                             </p>
                             <hr />
-                            <button onClick={this.buttonBuy}>comprar</button>
                         </div>
                     )
                 })
@@ -96,24 +90,15 @@ class Cart extends React.Component {
 
                     <h3>Valor total : R$ {Number(this.valueList()).toFixed(2).replace('.', ',')} {" "}</h3>
 
-                    <select onChange={this.state.onChancePayment}>
-                        <option disabled selected value={paymentMethodOptions}>
+                    <select onChange={this.onChancePayment}>
+                        <option disabled selected >
                             Tipo de Pagamento
                         </option>
                         {paymentMethodOptions}
                     </select>
-                    {this.paymentForm}
+                    {this.paymentForm()}
                 </div>
-
-                {/* <div>
-                <select>
-                    <option disabled selected>
-                        Parcelas
-              </option>
-                    {installmentsOptions}
-                </select>
-            </div>
-                 */}
+                <button onClick={this.buttonBuy}>comprar</button>
 
             </div>
         )
