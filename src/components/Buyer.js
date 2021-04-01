@@ -106,15 +106,15 @@ class Buyer extends React.Component {
     //     this.setState({ productsCart: cartList })
     // }
 
-    // deleteProductCart = (id) => {
-    //     let deleteProductCart = [...this.state.productsCart];
-    //     let productCart = this.state.cartList.findIndex(
-    //         (p) => p.id === id
-    //     );
+    deleteProductCart = (id) => {
+        let deleteProduct = [...this.state.productsCart];
+        let productCart = this.state.cartList.findIndex(
+            (p) => p.id === id
+        );
 
-    //     deleteProduct.splice(productCart, 1);
-    //     this.setState({ productsCart: deleteProduct });
-    // };
+        deleteProduct.splice(productCart, 1);
+        this.setState({ productsCart: deleteProduct });
+    };
 
 
     render() {
@@ -147,33 +147,32 @@ class Buyer extends React.Component {
                         categoryOptions={categoryOptions}
                         onClickOpenCart={this.onClickOpenCart}
                         openCart={this.state.openCart}
+                        productsCart={this.state.productsCart}
 
                     />
-                    {this.state.openCart && (
+                    {this.state.openCart ? (
                         <Cart
                             productsCart={this.state.productsCart}
                             quantity={this.state.quantity}
-                        // deleteProductCart={this.deleteProductCart}
+                            deleteProductCart={this.deleteProductCart}
                         />
-                    )}
+                    ) : (
+                        <div>
+                            {filter.map((p) => {
+                                return <Products
+                                    onClickAddCart={this.addCart}
+                                    products={p}
+                                />
+                            }
 
-                </div>
+                            )}
 
-                <div>
-                    {filter.map((p) => {
-                        return <Products
-                            onClickAddCart={this.addCart}
-                            // quantity={this.state.quantity}
-                            products={p}
-                        />
+                        </div>
+                    )
                     }
-
-                    )}
-
-                </div>
+                </ div>
 
             </ div>
-
 
         );
     }
