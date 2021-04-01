@@ -92,26 +92,11 @@ class Buyer extends React.Component {
         this.setState({ productsCart: newCartList });
     };
 
-
-    // addCart = (id) => {
-    //     const cartList = this.state.products.map((p) => {
-    //         if (p.id === id) {
-    //             const cartQuantity = this.state.quantity++
-    //             const productCart = this.state.productsCart.push(p.id)
-    //             return (productCart, cartQuantity)
-    //         } else {
-    //             return p
-    //         }
-    //     })
-    //     this.setState({ productsCart: cartList })
-    // }
-
     deleteProductCart = (id) => {
         let deleteProduct = [...this.state.productsCart];
-        let productCart = this.state.cartList.findIndex(
+        let productCart = this.state.productsCart.findIndex(
             (p) => p.id === id
         );
-
         deleteProduct.splice(productCart, 1);
         this.setState({ productsCart: deleteProduct });
     };
