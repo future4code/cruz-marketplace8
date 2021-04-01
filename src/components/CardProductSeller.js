@@ -1,100 +1,63 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Skeleton from '@material-ui/lab/Skeleton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import styled from 'styled-components';
 
-const useStyles = makeStyles((theme) => ({
-  card: {
-    maxWidth: 345,
-    margin: theme.spacing(2),
+const useStyles = makeStyles({
+  root: {
+    // maxWidth: 345,
+    width:300,
+    height:530,
   },
-  media: {
-    height: 190,
-  },
-}));
+});
 
-function Media(props) {
-    const { loading = false } = props;
-    const classes = useStyles();
-  
-    return (
-      <Card className={classes.card}>
-        <CardHeader
-          avatar={
-            loading ? (
-              <Skeleton animation="wave" variant="circle" width={40} height={40} />
-            ) : (
-              <Avatar
-                alt={props.name}
-                src="https://pbs.twimg.com/profile_images/877631054525472768/Xp5FAPD5_reasonably_small.jpg"
-              />
-            )
-          }
-          action={
-            loading ? null : (
-              <IconButton aria-label="settings">
-                <MoreVertIcon />
-              </IconButton>
-            )
-          }
-          title={
-            loading ? (
-              <Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />
-            ) : (
-              'Ted'
-            )
-          }
-          subheader={loading ? <Skeleton animation="wave" height={10} width="40%" /> : '5 hours ago'}
+const DivDelete = styled.div`
+  display:flex;
+  flex-direction:flex-end;
+`
+
+export default function ImgMediaCard(props) {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          alt="Product Image"
+          height="200"
+          image={props.image}
+          title={props.name}
         />
-        {loading ? (
-          <Skeleton animation="wave" variant="rect" className={classes.media} />
-        ) : (
-          <CardMedia
-            className={classes.media}
-            image={props.image}
-            title={props.name}
-          />
-        )}
-  
         <CardContent>
-          {loading ? (
-            <React.Fragment>
-              <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
-              <Skeleton animation="wave" height={10} width="80%" />
-            </React.Fragment>
-          ) : (
-            <Typography variant="body2" color="textSecondary" component="p">
-              {
-                props.discription
-              }
-            </Typography>
-          )}
+          <Typography gutterBottom variant="h5" component="h2">
+            {props.name}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            <p>Descrição: {props.description}</p>
+            <p>Preço: R${props.price}</p>
+            <p>Método de Pagamento: {props.payment}</p>
+            <p>Categoria: {props.category}</p>
+            <p>Parcelas: {props.installments}x</p>
+          </Typography>
         </CardContent>
-      </Card>
-    );
-  }
-  
-  Media.propTypes = {
-    loading: PropTypes.bool,
-  };
-
-export default class  CardProductSeller extends React.Component {
-  
-
-  render() {
-      return (
-      <div>
-        {/* <Media loading /> */}
-        <Media />
-      </div>
-    );
-  }
+      </CardActionArea>
+      <CardActions>
+        <DivDelete>
+        <Button size="small" color="primary" onClick={()=>props.delete(props.id)}>
+              <DeleteIcon/>            
+        </Button>
+        </DivDelete>
+      </CardActions>
+    </Card>
+  );
 }
+
+

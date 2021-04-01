@@ -28,7 +28,7 @@ export class HeaderBuyer extends React.Component {
                     <input
                         type='text'
                         value={this.props.inputSearch}
-                        placeholder="Buca por nome"
+                        placeholder="Busca por nome"
                         onChange={this.props.onChangeSearch}
                     >
                     </input>
@@ -36,6 +36,7 @@ export class HeaderBuyer extends React.Component {
                 <div>
                     {button}
                 </div>
+
 
             </div >
         )
