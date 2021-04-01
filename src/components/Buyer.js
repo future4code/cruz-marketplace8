@@ -78,29 +78,42 @@ class Buyer extends React.Component {
         )
     }
 
+    addCart = (addProduct) => {
+        let newCartList = [...this.state.productsCart];
+        let productShow = this.state.productsCart.findIndex(
+            (product) => product.id === addProduct.id
+        );
+        if (productShow > -1) {
+            newCartList[productShow].quantidade++;
+        } else {
+            addProduct.quantidade = 1;
+            newCartList.push(addProduct);
+        }
+        this.setState({ productsCart: newCartList });
+    };
 
 
-    addCart = (id) => {
-        const cartList = this.state.products.map((p) => {
-            if (p.id === id) {
-                const cartQuantity = this.state.quantity++
-                const productCart = this.state.productsCart.push(p.id)
-                return (productCart, cartQuantity)
-            } else {
-                return p
-            }
-        })
-        this.setState({ productsCart: cartList })
-    }
+    // addCart = (id) => {
+    //     const cartList = this.state.products.map((p) => {
+    //         if (p.id === id) {
+    //             const cartQuantity = this.state.quantity++
+    //             const productCart = this.state.productsCart.push(p.id)
+    //             return (productCart, cartQuantity)
+    //         } else {
+    //             return p
+    //         }
+    //     })
+    //     this.setState({ productsCart: cartList })
+    // }
 
     // deleteProductCart = (id) => {
-    //     let deleteProductCart = [...this.state.cartList];
+    //     let deleteProductCart = [...this.state.productsCart];
     //     let productCart = this.state.cartList.findIndex(
     //         (p) => p.id === id
     //     );
 
     //     deleteProduct.splice(productCart, 1);
-    //     this.setState({ cartList: deleteProduct });
+    //     this.setState({ productsCart: deleteProduct });
     // };
 
 
@@ -149,8 +162,8 @@ class Buyer extends React.Component {
                 <div>
                     {filter.map((p) => {
                         return <Products
-                            addCart={this.addCart}
-                            quantity={this.state.quantity}
+                            onClickAddCart={this.addCart}
+                            // quantity={this.state.quantity}
                             products={p}
                         />
                     }
