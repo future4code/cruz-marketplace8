@@ -42,9 +42,8 @@ export class AppContainer extends Component {
     }
         return (
           <div>
-            {/* {openPage()}       
-            {this.renderPage()} */}
-          <Seller/>
+            {openPage()}       
+            {this.renderPage()}
           </div>
         )
       }
