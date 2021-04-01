@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Buyer from './Buyer'
 
+
 const DivHeader = styled.div`
 background-color: #F29803;
 display: grid;
@@ -36,25 +37,6 @@ export default class HeaderSeller extends React.Component {
     
     handleButton = () => {
         this.setState({page:"Buyer"})
-    }
-
-    renderPage = () => {
-        if (this.state.page === 'Buyer') {
-            return(<div>
-                <Buyer/>
-            </div>)
-        } else {
-            return (
-                <DivHeader>
-                    <Ploja><b>Minha lojinha</b></Ploja>
-                    <DivBotton>
-                        <Button onClick={this.handleButton} variant="contained" color="primary" href="#contained-buttons">
-                         Ir para Loja
-                        </Button>
-                    </DivBotton> 
-                </DivHeader>
-                )
-        }
     }
 
     render () {
