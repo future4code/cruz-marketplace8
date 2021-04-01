@@ -21,6 +21,11 @@ class Buyer extends React.Component {
 
     componentDidMount = () => {
         this.getProduct()
+        const cartProductList = JSON.parse(localStorage.getItem("carrinho"))
+    
+        cartProductList && this.setState({
+            productsCart: cartProductList,
+        });
     }
 
     getProduct = async () => {
@@ -140,6 +145,7 @@ class Buyer extends React.Component {
                             productsCart={this.state.productsCart}
                             quantity={this.state.quantity}
                             deleteProductCart={this.deleteProductCart}
+                            addCart={this.addCart}
                         />
                     ) : (
                         <div>

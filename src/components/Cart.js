@@ -1,11 +1,11 @@
 import React from 'react';
+import CartItens from './CartItens'
 import { installments, paymentMethod } from '../parameters'
 
 
 class Cart extends React.Component {
 
     state = {
-        productList: [...this.props.productsCart],
         payment: ''
     }
 
@@ -13,7 +13,6 @@ class Cart extends React.Component {
         this.setState({ payment: e.target.value })
     }
 
-    products = () => { this.setState({ productList: [...this.props.productsCart] }) }
 
     valueList = () => {
         const products = this.props.productsCart
@@ -68,26 +67,11 @@ class Cart extends React.Component {
         return (
             <div>
                 <h1>Carrinho</h1>
-                {this.state.productList.map((p) => {
-                    return (
-                        <div key={p.id}>
-                            <button onClick={() => this.props.deleteProductCart(p.id)}> Excluir </button>
-
-                            <p>Nome: {p.name} </p>
-                            <p>Preço: {p.price} </p>
-                            <p>quantidade: {p.quantidade}</p>
-                            <p>
-                                Valor do produto: R$  {Number(p.price * p.quantidade)
-                                    .toFixed(2)
-                                    .replace('.', ',')}
-                            </p>
-                            <hr />
-                        </div>
-                    )
-                })
-                }
+                <CartItens 
+                productList={this.props.productsCart}
+                deleteProductCart={this.props.deleteProductCart}
+                />
                 <div>
-
                     <h3>Valor total : R$ {Number(this.valueList()).toFixed(2).replace('.', ',')} {" "}</h3>
 
                     <select onChange={this.onChancePayment}>
@@ -96,7 +80,9 @@ class Cart extends React.Component {
                         </option>
                         {paymentMethodOptions}
                     </select>
+
                     {this.paymentForm()}
+
                 </div>
                 <button onClick={this.buttonBuy}>comprar</button>
 
