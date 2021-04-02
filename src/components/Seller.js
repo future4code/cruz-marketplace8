@@ -7,6 +7,7 @@ import {baseUrl, categories, paymentMethod, installments} from '../parameters'
 import CardProductSeller from './CardProductSeller'
 import HeaderSeller from './HeaderSeller'
 import ArrowUpwardSharpIcon from '@material-ui/icons/ArrowUpwardSharp';
+import Footer from './Footer'
 
 const DivAddProduct = styled.div`
     /* display: flex; */
@@ -242,6 +243,7 @@ export default class Seller extends React.Component {
                     </DivProducts>
                 </DivAll>
                 
+                <Footer />
                 
         </div>)
           

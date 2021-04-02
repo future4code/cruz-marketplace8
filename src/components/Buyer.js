@@ -4,6 +4,7 @@ import HeaderBuyer from './HeaderBuyer'
 import { baseUrl, categories } from '../parameters'
 import Products from './Products';
 import Cart from './Cart'
+import Footer from './Footer'
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 // import styled from 'styled-components';
 
@@ -161,6 +162,8 @@ class Buyer extends React.Component {
                         </div>
                     )
                     }
+
+                    <Footer />
                 </ div>
 
             </ div>
