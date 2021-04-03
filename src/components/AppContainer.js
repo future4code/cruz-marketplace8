@@ -4,6 +4,8 @@ import Buyer from './Buyer'
 import Seller from './Seller'
 import Button from '@material-ui/core/Button';
 import logo from './img/logo.png'
+import HeaderBuyer from './HeaderBuyer'
+import ButtonOpenSeller from './ButtonOpenSeller';
 
 const DivAppContainer = styled.div `
   background-color: #F29803;
@@ -27,20 +29,18 @@ const BrandingDiv = styled.div `
   
   img{
     margin-bottom:0px;
+    
   }
 
 `
 const BottonAppContainer = styled.div `
   text-align:center;
-  margin-left: 20px;
-  
-  width: 400px;
-  
-  display:flex;
-  flex-direction:column;
-  
-   
-`
+  width: 450px;
+  height: 100px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 50px;
+` 
 
 const DivHeader = styled.div`
 background-color: #F29803;
@@ -49,7 +49,7 @@ grid-template-columns: 1fr 1fr 1fr;
 grid-template-rows:1fr;
 justify-content:center;
 width: 100vw;
-height: 10vh; 
+height: 120px; 
 `
 
 const Ploja = styled.p`
@@ -62,11 +62,28 @@ const Ploja = styled.p`
 `
 
 const DivBotton = styled.div`
-    margin-top:20px;
+    margin-top:50px;
     margin-right:50px;
     justify-self:end;
     grid-column:3;
     
+`
+const DivButtonSeller = styled.div`
+    width: 15%;
+    background-color: #F29803;
+    align-items:flex-end;
+    display:flex;
+    position:absolute;
+    right: 1px;
+    top:50px;
+`
+const ImgLogo = styled.img`
+    grid-column: 1/2;
+    margin-left:40px;
+    margin-top:40px;
+    width: 180px;
+    height:auto;
+    position: relative;
 `
 
 export class AppContainer extends Component {
@@ -90,6 +107,7 @@ export class AppContainer extends Component {
 
   sellerPage = () => {
     this.setState({ page: 'Seller' })
+    console.log ("Clicou")
   }
 
   render() {
@@ -109,6 +127,7 @@ export class AppContainer extends Component {
               >
               Sou Comprador
               </Button>
+
               <Button onClick={this.sellerPage} variant="contained" color="primary" href="#contained-buttons">
               Sou Vendedor
               </Button>
@@ -118,16 +137,20 @@ export class AppContainer extends Component {
          
         )
       } else if (this.state.page === 'Buyer') {
-        return <DivHeader>
-                  <DivBotton>
-                      <Button onClick={this.sellerPage} variant="contained" color="primary" href="#contained-buttons">
-                        Ir para Lojinha
-                      </Button>
-                  </DivBotton> 
-               </DivHeader>
+        return (
+          
+          <DivButtonSeller>
+              <Button  onClick={this.sellerPage} variant="contained" color="primary" href="#contained-buttons">
+                  Minha Lojinha
+              </Button>
+          </DivButtonSeller>
+        
+      )
+        
       } else {
         return (
             <DivHeader>
+                <ImgLogo src ={logo}/>
                  <Ploja><b>Minha lojinha</b></Ploja>
                   <DivBotton>
                       <Button onClick={this.buyerPage} variant="contained" color="primary" href="#contained-buttons">

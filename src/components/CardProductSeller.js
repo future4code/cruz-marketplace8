@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
+// import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -14,9 +14,27 @@ const useStyles = makeStyles({
   root: {
     // maxWidth: 345,
     width:300,
-    height:530,
+    
   },
 });
+
+const Card = styled.div`
+  margin: 20px;
+  padding-top: 4px;
+  height: 70vh;
+  width: 200px;
+  border-radius:10px;
+  box-shadow: 4px 4px 4px orange;
+`
+
+const CardPhoto = styled.div`
+  height: 70%;
+  width: 100%;
+`
+
+const Content = styled.div`
+    /* height: 120px; */
+  `
 
 const DivDelete = styled.div`
   display:flex;
@@ -29,25 +47,30 @@ export default function ImgMediaCard(props) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Product Image"
-          height="200"
-          image={props.image}
-          title={props.name}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            <p>Descrição: {props.description}</p>
-            <p>Preço: R${props.price}</p>
-            <p>Método de Pagamento: {props.payment}</p>
-            <p>Categoria: {props.category}</p>
-            <p>Parcelas: {props.installments}x</p>
-          </Typography>
-        </CardContent>
+        <CardPhoto>
+          <CardMedia
+            component="img"
+            alt="Product Image"
+            height="200"
+            image={props.image}
+            title={props.name}
+          />
+        </CardPhoto>
+        <Content>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {props.name}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              <p>Descrição: {props.description}</p>
+              <p>Preço: R${props.price}</p>
+              <p>Método de Pagamento: {props.payment}</p>
+              <p>Categoria: {props.category}</p>
+              <p>Parcelas: {props.installments}</p>
+            </Typography>
+          </CardContent>
+        </Content>
+        
       </CardActionArea>
       <CardActions>
         <DivDelete>

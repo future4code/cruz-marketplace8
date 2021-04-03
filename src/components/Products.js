@@ -14,7 +14,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 const Card = styled('div')({
     margin: '20px',
     paddingTop: '4px',
-    heigth: '180px',
+    heigth: '100vh',
     width: '200px',
     borderRadius:'10px',
     boxShadow: '4px 4px 4px orange'
@@ -24,7 +24,7 @@ const CardFoto = styled('div')({
     heigth: '70%',
     width: '200px',
 });
-const Conteudo = style.div`
+const Content = style.div`
     height: 120px;`
 
 const ButtonAddCart = style.div`
@@ -50,7 +50,7 @@ export default class Products extends React.Component {
                         title={product.id}
                     />
                 </CardFoto>
-                <Conteudo>
+                <Content>
                     <CardContent>
                         <Typography gutterBottom variant="h6" component="h2">
                             {product.name}
@@ -65,7 +65,7 @@ export default class Products extends React.Component {
                             Preço: R${product.price},00
                         </Typography>
                     </CardContent>
-                </Conteudo>
+                </Content>
             </CardActionArea>
             <ButtonAddCart>
                 <IconButton onClick={() => this.props.onClickAddCart(product)} 

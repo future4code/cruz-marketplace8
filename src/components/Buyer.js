@@ -6,24 +6,26 @@ import Products from './Products';
 import Cart from './Cart'
 import Footer from './Footer'
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
-import { styled } from '@material-ui/core/styles';
+// import { styled } from '@material-ui/core/styles';
 import ArrowUpwardSharpIcon from '@material-ui/icons/ArrowUpwardSharp';
 import HeadsetIcon from '@material-ui/icons/Headset';
 import IconButton from '@material-ui/core/IconButton';
+import ButtonOpenSeller from './ButtonOpenSeller';
+import styled from 'styled-components';
+import { CommentSharp } from '@material-ui/icons';
 
+const BuyerContainer = styled.div`
+    width: auto;
+`
 
-
-// import styled from 'styled-components';
-
-const ContainerProduct = styled('div')({
-    justifyContent: 'center',
-    marginLeft: '320px',
-    width: '60%',
-    height:  'auto',
-    display: 'flex',
-    flexWrap: 'wrap',
-});
-
+const ContainerProduct = styled.div`
+    justify-Content: center;
+    margin-Left: 320px;
+    width: 60%;
+    height:  auto;
+    display: flex;
+    flex-Wrap: wrap;
+`
 const DivIcons = styled('div')({
     position: 'fixed',
     right: '40px',
@@ -149,7 +151,8 @@ export default class Buyer extends React.Component {
         return (
             <div>
 
-                <div>
+                <BuyerContainer>
+        
                     <HeaderBuyer
                         onChanceCategory={this.onChanceCategory}
                         onChangeOrder={this.onChangeOrder}
@@ -162,8 +165,9 @@ export default class Buyer extends React.Component {
                         onClickOpenCart={this.onClickOpenCart}
                         openCart={this.state.openCart}
                         productsCart={this.state.productsCart}
-
-                    />
+                  
+                    /> 
+                    
                     {this.state.openCart ? (
                         <Cart
                             productsCart={this.state.productsCart}
@@ -188,12 +192,15 @@ export default class Buyer extends React.Component {
                     
                     }
                     <DivIcons>
-                    <IconButton  
-                            color="primary"
-                            fontSize="large" 
-                            >
-                            <HeadsetIcon/>
-                        </IconButton>
+                        <a href = "https://forms.gle/2VCwNryJFzLYRnW39">
+                            <IconButton  
+                                color="primary"
+                                fontSize="large" 
+                                >
+                                <HeadsetIcon/>
+                            </IconButton>
+                        </a>
+                        
                         <IconButton  
                             color="primary" 
                             fontSize="large"
@@ -205,7 +212,7 @@ export default class Buyer extends React.Component {
                         <Footer>
                         </Footer>
                    
-                </ div>
+                </ BuyerContainer>
                 
             </ div>
 
