@@ -231,7 +231,7 @@ export default class Seller extends React.Component {
                                     Adicionar
                                 </Button>
                             </DivBotton>               
-                        </DivAddProduct>
+                        </DivAddProduct>-
                     <DivLinha1></DivLinha1>
                     <DivLinha2></DivLinha2>
                     <DivProducts>

@@ -6,9 +6,32 @@ import Products from './Products';
 import Cart from './Cart'
 import Footer from './Footer'
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
+import { styled } from '@material-ui/core/styles';
+import ArrowUpwardSharpIcon from '@material-ui/icons/ArrowUpwardSharp';
+import HeadsetIcon from '@material-ui/icons/Headset';
+import IconButton from '@material-ui/core/IconButton';
+
+
+
 // import styled from 'styled-components';
 
-class Buyer extends React.Component {
+const ContainerProduct = styled('div')({
+    justifyContent: 'center',
+    marginLeft: '320px',
+    width: '60%',
+    height:  'auto',
+    display: 'flex',
+    flexWrap: 'wrap',
+});
+
+const DivIcons = styled('div')({
+    position: 'fixed',
+    right: '40px',
+    bottom: '20px',
+});
+
+
+export default class Buyer extends React.Component {
 
     state = {
         products: [],
@@ -149,7 +172,7 @@ class Buyer extends React.Component {
                             addCart={this.addCart}
                         />
                     ) : (
-                        <div>
+                        <ContainerProduct>
                             {filter.map((p) => {
                                 return <Products
                                     onClickAddCart={this.addCart}
@@ -158,17 +181,34 @@ class Buyer extends React.Component {
                             }
 
                             )}
+        
 
-                        </div>
+                        </ContainerProduct>
                     )
+                    
                     }
-
-                    <Footer />
+                    <DivIcons>
+                    <IconButton  
+                            color="primary"
+                            fontSize="large" 
+                            >
+                            <HeadsetIcon/>
+                        </IconButton>
+                        <IconButton  
+                            color="primary" 
+                            fontSize="large"
+                            href="#top"
+                            >
+                            <ArrowUpwardSharpIcon/>
+                        </IconButton>
+                    </DivIcons>
+                        <Footer>
+                        </Footer>
+                   
                 </ div>
-
+                
             </ div>
 
         );
     }
 }
-export default Buyer;
