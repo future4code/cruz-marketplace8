@@ -5,13 +5,13 @@ import Buyer from './Buyer'
 
 
 const DivHeader = styled.div`
-background-color: #F29803;
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-template-rows:1fr;
-justify-content:center;
-width: 100vw;
-height: 10vh; 
+    background-color: #F29803;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:1fr;
+    justify-content:center;
+    width: 100vw;
+    height: 120px; 
 `
 
 const Ploja = styled.p`
@@ -24,7 +24,7 @@ const Ploja = styled.p`
 `
 
 const DivBotton = styled.div`
-    margin-top:20px;
+    margin-top:50px;
     margin-right:50px;
     justify-self:end;
     grid-column:3;

@@ -5,20 +5,23 @@ import IconButton from '@material-ui/core/IconButton';
 import ButtonCart from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import ButtonCartIcon from '@material-ui/icons/ShoppingCart';
+import Button from '@material-ui/core/Button';
+import ButtonOpenSeller from './ButtonOpenSeller';
 
 const Header = styled.div`
     background-color: #f3940c;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 10%;
+    grid-template-columns: 1fr 3fr 10%;
     height: 120px;
  
 `
 const ImgLogo = styled.img`
     grid-column: 1/2;
     margin-left:40px;
+    margin-top:40px;
+    width: 180px;
     height:auto;
-    width: auto;
     position: relative;
 `
 
@@ -26,7 +29,7 @@ const DivCenter = styled.div`
 padding-top: 20px;
 display: grid;
 height: 120px;
-grid-template-columns: 1fr 1fr;
+grid-template-columns: 1fr 2fr;
 
 `
 const Paper = styled.div`
@@ -35,12 +38,10 @@ display:flex;
 flex-direction: column-reverse;
 background-color: white;
 margin-bottom: 8px;
-margin-top: 30px;
-margin-left: 80px;
-padding-left: 20px;
-padding-right:20px;
+margin-top: 40px;
+padding:0 20px;
 height: 28px;
-width: 240px;
+width: 340px;
 border-radius: 20px;
 
 `
@@ -51,13 +52,21 @@ const DivFiltro = styled.div`
     grid-column: 2/3;
     display: flex;
     position: relative;
+    
 
 `
 const DivOrdenar = styled.div`
 display: flex;
 flex-wrap: wrap;
 width: 100px;
-height: 60px;`
+height: 60px;
+margin-left: 10%;
+color:white;
+    select{
+        border-radius: 20px;
+        padding: 0 25px
+    }
+`
 
 
 const DivCategoria = styled.div`
@@ -65,15 +74,27 @@ display: flex;
 flex-wrap: wrap;
 width: 100px;
 height: 60px;
-margin-left: 10%;`
+margin-left: 10%;
+color:white;
+    select{
+        border-radius: 20px;
+        padding: 0 25px
+    }
+`
+
 
 const DivButtonCart = styled.div`
-    grid-column: 3/4;
-    height: 100%;
+    
     display: flex;
-    flex-direction: row-reverse;
-    align-items:flex-end;
+    position:absolute;
+    right: 230px;
+    top:20px;
+`
 
+const DivButton = styled.div`
+    
+    display: flex;
+    margin-top:30px;
 `
 
 const PCart = styled.p`
@@ -88,7 +109,10 @@ export default class HeaderBuyer extends React.Component {
     render() {
 
         const button = this.props.openCart ? (
-            <button onClick={this.props.onClickOpenCart}>Continuar comprando</button>
+            <DivButton>
+                <Button onClick={this.props.onClickOpenCart}>Continuar comprando</Button>
+            </DivButton>
+            
         ) : (
         
         <IconButton onClick={this.props.onClickOpenCart}>
@@ -125,16 +149,16 @@ export default class HeaderBuyer extends React.Component {
                         <label>Buscar por: </label>
                             <select onChange={this.props.onChanceCategory}>
                                 <option>Categoria</option>
-                                {this.props.categoryOption}
+                                {this.props.categoryOptions}
                             </select>
                     
                         </DivCategoria>
                     </DivFiltro>
                 </DivCenter>
+                     
                 <DivButtonCart>
                     {button}
-                </DivButtonCart>
-                
+                </DivButtonCart>   
                 
             </Header >
         )
