@@ -15,7 +15,7 @@ import styled from 'styled-components';
 import { CommentSharp } from '@material-ui/icons';
 
 const BuyerContainer = styled.div`
-    width: auto;
+    width: 100vw;
 `
 
 const ContainerProduct = styled.div`
