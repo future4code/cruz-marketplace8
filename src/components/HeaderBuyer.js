@@ -14,7 +14,7 @@ const Header = styled.div`
     display: grid;
     grid-template-columns: 1fr 3fr 10%;
     height: 120px;
- 
+
 `
 const ImgLogo = styled.img`
     grid-column: 1/2;
@@ -47,7 +47,6 @@ border-radius: 20px;
 `
 
 const DivFiltro = styled.div`
-    justify-items: left;
     margin-top: 8px;
     grid-column: 2/3;
     display: flex;
@@ -74,7 +73,7 @@ display: flex;
 flex-wrap: wrap;
 width: 100px;
 height: 60px;
-margin-left: 10%;
+margin-left: 20%;
 color:white;
     select{
         border-radius: 20px;
@@ -84,17 +83,18 @@ color:white;
 
 
 const DivButtonCart = styled.div`
-    
+    height: 40px;
+    width: 20px;
     display: flex;
     position:absolute;
-    right: 230px;
-    top:20px;
+    right: 150px;
+    top:60px;
 `
 
 const DivButton = styled.div`
-    
     display: flex;
-    margin-top:30px;
+    margin-top:20px;
+    
 `
 
 const PCart = styled.p`

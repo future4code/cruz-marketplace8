@@ -17,13 +17,17 @@ const Card = styled('div')({
     heigth: '100vh',
     width: '200px',
     borderRadius:'10px',
-    boxShadow: '4px 4px 4px orange'
+    boxShadow: '4px 4px 4px orange',
 });
 
 const CardFoto = styled('div')({
     heigth: '70%',
     width: '200px',
 });
+
+
+
+
 const Content = style.div`
     height: 120px;`
 
