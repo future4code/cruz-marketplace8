@@ -34,11 +34,19 @@ const CardPhoto = styled.div`
 
 const Content = styled.div`
     /* height: 120px; */
+    display: flex;
+    height:280px;
   `
 
 const DivDelete = styled.div`
-  display:flex;
-  flex-direction:flex-end;
+    height: 10%;
+    width: 20px;
+    display: relative;
+    margin-top: 70%;
+    margin-left: 220px;
+    position: absolute;
+    flex-direction: row-reverse;
+    z-Index: 8;
 `
 
 export default function ImgMediaCard(props) {
@@ -68,17 +76,15 @@ export default function ImgMediaCard(props) {
               <p>Categoria: {props.category}</p>
               <p>Parcelas: {props.installments}</p>
             </Typography>
+            
           </CardContent>
+              <DivDelete>
+                <Button size="small" color="primary" onClick={()=>props.delete(props.id)}>
+                <DeleteIcon/>            
+              </Button>
+            </DivDelete>
         </Content>
-        
       </CardActionArea>
-      <CardActions>
-        <DivDelete>
-        <Button size="small" color="primary" onClick={()=>props.delete(props.id)}>
-              <DeleteIcon/>            
-        </Button>
-        </DivDelete>
-      </CardActions>
     </Card>
   );
 }

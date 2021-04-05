@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
 
 const DivBotton = styled.div`
-    margin-top:50px;
- 
+    
 `
 
 

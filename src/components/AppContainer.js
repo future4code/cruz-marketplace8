@@ -13,6 +13,7 @@ const DivAppContainer = styled.div `
   flex-direction: column;
   justify-content:center;
   align-items: center;
+  max-width:100vw;
   height: 100vh;
   margin-top:0px;
 
@@ -75,12 +76,12 @@ const DivButtonSeller = styled.div`
     display:flex;
     position:absolute;
     right: 1px;
-    top:50px;
+    top:10px;
 `
 const ImgLogo = styled.img`
     grid-column: 1/2;
     margin-left:40px;
-    margin-top:40px;
+    margin-top:10px;
     width: 180px;
     height:auto;
     position: relative;

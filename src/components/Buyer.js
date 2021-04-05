@@ -15,13 +15,14 @@ import styled from 'styled-components';
 import { CommentSharp } from '@material-ui/icons';
 
 const BuyerContainer = styled.div`
-    width: auto;
+    width: 100vw;
 `
 
 const ContainerProduct = styled.div`
     justify-Content: center;
-    margin-Left: 320px;
-    width: 60%;
+    margin-Left: 10%;
+    margin-right: 10%;
+    width: 80%;
     height:  auto;
     display: flex;
     flex-Wrap: wrap;
@@ -149,7 +150,6 @@ export default class Buyer extends React.Component {
 
 
         return (
-            <div>
 
                 <BuyerContainer>
         
@@ -213,8 +213,6 @@ export default class Buyer extends React.Component {
                         </Footer>
                    
                 </ BuyerContainer>
-                
-            </ div>
 
         );
     }

@@ -11,13 +11,14 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 
 const Footer = styled.div`
     background-color: #f2970b;
-    position: flex;
+    display: absolute;
+    position: bottom;
     bottom: 0;
     width: 100vw;
     height: 20vh;
     text-align: center;
     align-items: center;
-    position: relative;
+    
 `
 const DivIcons = styled.div`
     a:visited, a:active, a:link {
@@ -56,7 +57,7 @@ export default class FooterAll extends React.Component {
                         <IconButton  
                         color="primary" 
                         aria-label="Face Book">
-                            <FacebookIcon style ={{ fontSize:40}}/>
+                            <FacebookIcon style ={{ fontSize:20}}/>
                         </IconButton>
                     </a>
                     <a href='https://www.instagram.com/' target="_blank">
@@ -64,7 +65,7 @@ export default class FooterAll extends React.Component {
                         color="primary" 
                         aria-label="Instagram"
                         >
-                            <InstagramIcon style ={{ fontSize:40}}/>
+                            <InstagramIcon style ={{ fontSize:20}}/>
                         </IconButton>
                     </a>
                     <a href='https://br.pinterest.com/' target="_blank">
@@ -72,7 +73,7 @@ export default class FooterAll extends React.Component {
                             color="primary" 
                             aria-label="Pinterest"
                             >
-                            <PinterestIcon style ={{ fontSize:40}}/>
+                            <PinterestIcon style ={{ fontSize:20}}/>
                         </IconButton>
                     </a>
                     <a href='https://www.twitter.com' target="_blank">
@@ -80,7 +81,7 @@ export default class FooterAll extends React.Component {
                             color="primary" 
                             aria-label="Twitter"
                             >
-                            <TwitterIcon style ={{ fontSize:40}}/>
+                            <TwitterIcon style ={{ fontSize:20}}/>
                         </IconButton>
                     </a>
                     <a href='https://www.linkedin.com'>
@@ -88,7 +89,7 @@ export default class FooterAll extends React.Component {
                             color="primary" 
                             aria-label="Linkedin"
                             >
-                            <LinkedInIcon style ={{ fontSize:40}}/>
+                            <LinkedInIcon style ={{ fontSize:20}}/>
                         </IconButton>
                     </a>
                     <a href='https://www.youtube.com/'target="_blank">
@@ -96,7 +97,7 @@ export default class FooterAll extends React.Component {
                         color="primary" 
                         aria-label="Youtube"
                         >
-                            <YouTubeIcon style ={{ fontSize:40}}/>
+                            <YouTubeIcon style ={{ fontSize:20}}/>
                         </IconButton>
                     </a>
                 </DivIcons>

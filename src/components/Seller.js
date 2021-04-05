@@ -11,6 +11,7 @@ import HeadsetIcon from '@material-ui/icons/Headset';
 import IconButton from '@material-ui/core/IconButton';
 import Footer from './Footer'
 
+
 const DivAddProduct = styled.div`
     flex-direction:column;
     margin:8px;
@@ -39,10 +40,10 @@ const DivProducts = styled.div`
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin:8px;
-    margin-left:150px;
 `
 const DivAll = styled.div`
     display:flex;
+    width: 100%;
 `
 const DivCard = styled.div`
     margin:15px;
@@ -59,7 +60,7 @@ const Pinputs = styled.p`
 `
 
 const DivBotton = styled.div`
-    margin-top:20px;
+    margin-top:10px;
 `
 
 export default class Seller extends React.Component {
